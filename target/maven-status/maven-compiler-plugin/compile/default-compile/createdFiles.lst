@@ -1,3 +1,5 @@
 hello/HelloController.class
-hello/MessageFormat.class
+hello/Greeting.class
 hello/Application.class
+hello/MessageFormat.class
+hello/GreetingController.class
