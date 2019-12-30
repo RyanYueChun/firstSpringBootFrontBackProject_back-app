@@ -1,12 +1,14 @@
 package hello;
 
 import com.google.gson.Gson;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
 
+    @CrossOrigin
     @RequestMapping("/")
     public String index() {
         MessageFormat newMessage = new MessageFormat();

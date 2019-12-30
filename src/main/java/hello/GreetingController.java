@@ -1,9 +1,9 @@
 package hello;
 
 import java.util.concurrent.atomic.AtomicLong;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.Gson;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GreetingController {
@@ -11,9 +11,20 @@ public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/greeting")
-    public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
+    @CrossOrigin
+    @GetMapping("/greeting")
+    public Greeting getGreeting(@RequestParam(value="name", required = false, defaultValue="World") String name) {
         return new Greeting(counter.incrementAndGet(),
                 String.format(template, name));
+    }
+
+    @CrossOrigin
+    @PostMapping("/greeting")
+    public Greeting greetingPost(@RequestBody String receivedJson) {
+        Gson gson = new Gson();
+        MessageFormat receivedBody = gson.fromJson(receivedJson, MessageFormat.class);
+
+        return new Greeting(counter.incrementAndGet(),
+                String.format(template, receivedBody.getContents()));
     }
 }
