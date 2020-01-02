@@ -6,6 +6,7 @@
     <groupId>org.springframework</groupId>
     <artifactId>gs-rest-service</artifactId>
     <version>0.1.0</version>
+    <description>Backend java application for the project</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -14,29 +15,40 @@
     </parent>
 
     <dependencies>
+        <!-- Spring web + RESTful + Apache Tomcat as default container -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- Starter for testing Spring Boot applications with libraries including JUnit, Hamcrest and Mockito -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <scope>test</scope>
         </dependency>
+        -->
+        <!-- ?? -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!-- Google Gson for Json objects -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.6</version>
             <scope>compile</scope>
+        </dependency>
+        <!-- ElasticSearch version -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
     </dependencies>
 
