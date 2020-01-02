@@ -1,7 +1,6 @@
 package elasticSearch.controller;
 
 import elasticSearch.exceptions.BeanNotFoundException;
-import elasticSearch.exceptions.BeanNotReceivedException;
 import elasticSearch.helloNoElastic.MessageFormat;
 import elasticSearch.models.Book;
 import elasticSearch.service.BookService;
@@ -36,10 +35,12 @@ public class ElasticController {
     }
 
     @CrossOrigin
-    @DeleteMapping(value = "/delete")
-    public String delete(@RequestBody(required = true) Book book) {
-        bookService.delete(book);
-        return book.getTitle() + " has been deleted";
+    @DeleteMapping(value = "/delete/{book-id}")
+    public MessageFormat delete(@PathVariable(name = "book-id") String id) {
+        bookService.deleteById(id);
+        MessageFormat responseMessage = new MessageFormat();
+        responseMessage.setContents("Book of id : " + id + " has been deleted");
+        return responseMessage;
     }
 
     @CrossOrigin
@@ -67,7 +68,8 @@ public class ElasticController {
     public MessageFormat saveAllBooks(@RequestBody List<Book> books) {
         MessageFormat responseMessage = new MessageFormat();
 
-        if (books.iterator().hasNext()) {
+        if (!books.iterator().hasNext()) {
+            System.out.println(books);
             responseMessage.setContents("No valid books to add");
             return responseMessage;
         }

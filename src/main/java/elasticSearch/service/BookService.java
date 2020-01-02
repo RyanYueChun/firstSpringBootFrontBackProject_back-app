@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface BookService {
 
-    public void delete(Book book);
+    public void deleteById(String id);
     public Iterable<Book> findAll();
     public Optional<Book> findById(String id);
     public List<Book> findByAuthor(String author);
