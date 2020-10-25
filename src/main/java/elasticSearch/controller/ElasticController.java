@@ -69,7 +69,6 @@ public class ElasticController {
         MessageFormat responseMessage = new MessageFormat();
 
         if (!books.iterator().hasNext()) {
-            System.out.println(books);
             responseMessage.setContents("No valid books to add");
             return responseMessage;
         }
